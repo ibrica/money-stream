@@ -1,6 +1,6 @@
 # main
 .DS_Store
-/dist/js/*
+/dist
 /node_modules
 
 

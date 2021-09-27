@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require('path'),
+      CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: "development",
@@ -7,11 +8,11 @@ module.exports = {
     entry: {
         content: './src/app/content.ts',
         background: './src/app/background.ts',
-        popup: './src/ui/popup.tsx',
+        popup: './src/pages/popup.tsx',
     },
 
     output: {
-        path: path.resolve(__dirname, 'dist/js'),
+        path: path.resolve(__dirname, 'dist/'),
         filename: '[name].js'
     },
 
@@ -25,4 +26,13 @@ module.exports = {
             { test: /\.css$/, use: ['style-loader', 'css-loader'] }
         ]
     },
+
+    plugins: [
+        new CopyWebpackPlugin({
+          patterns: [
+              { from: 'src/pages/*.html'},
+              { from: 'src/icons', to: './icons'},
+          ]
+        })
+    ]
 };
