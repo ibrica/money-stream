@@ -1,38 +1,37 @@
 {
-    "name": "Solana money stream extension",
-    "version": "0.0.1",
-    "manifest_version": 2,
-    "description": "Chrome extension with TypeScript, React, and Webpack.",
-    "homepage_url": "https://logit.agency",
-    "icons": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    },
-    "browser_action": {
-      "default_title": "money-stream",
-      "default_popup": "popup.html"
-    },
-    "default_locale": "en",
-    "background": {
-      "scripts": [
-        "js/background.js"
-      ],
-      "persistent": true
-    },
-    "permissions": [
-      "https://*/*"
+  "name": "Solana money stream extension",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Chrome extension with TypeScript, React, and Webpack.",
+  "homepage_url": "https://logit.agency",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_action": {
+    "default_title": "money-stream",
+    "default_popup": "popup.html"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "js/background.js"
     ],
-    "content_security_policy": "default-src 'self'; style-src 'self' data: 'unsafe-inline';",
-    "content_scripts": [
-      {
-        "matches": [
-          "https://*/*"
-        ],
-        "js": [
-          "js/content.js"
-        ]
-      }
-    ]
-  }
-  
+    "persistent": true
+  },
+  "permissions": [
+    "https://*/*"
+  ],
+  "content_security_policy": "default-src 'self'; style-src 'self' data: 'unsafe-inline'; img-src 'self' data: https:; prefetch-src 'self' data: https:; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com",
+  "content_scripts": [
+    { 
+      "matches": [
+        "https://*/*"
+      ],
+      "js": [
+        "js/content.js"
+      ]
+    }
+  ]
+}

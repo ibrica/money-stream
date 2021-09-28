@@ -1,6 +1,7 @@
 const path = require('path'),
       webpack = require('webpack'),
       CopyWebpackPlugin = require('copy-webpack-plugin');
+
       
 
 module.exports = {
@@ -19,7 +20,12 @@ module.exports = {
     },
 
     resolve: {
-        extensions: [".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js"],
+        fallback: {
+            "crypto": false, // Needed for solana wallet adapter
+            "stream": require.resolve("stream-browserify"),
+            "buffer": require.resolve("buffer"),
+        } 
     },
 
     module: {
@@ -39,7 +45,15 @@ module.exports = {
             NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined            
             INLINE_RUNTIME_CHUNK:false, // To prevent Chrome CSP error, doesn't work see .env file
             DEBUG: false,
-          })
+          }),
+          // Work around for Buffer is undefined:
+        // https://github.com/webpack/changelog-v5/issues/10
+        new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer'],
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+        }),
           
     ]
 };
