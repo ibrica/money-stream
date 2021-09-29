@@ -1,20 +1,20 @@
 import * as React from "react"
-import {Component, MouseEvent} from "react"
+import {Component, MouseEvent, StrictMode} from "react"
 import {render} from "react-dom"
-import {Wallet} from './wallet'
+import Wallet from './wallet'
 import {SendOneLamportToRandomAddress} from "./send"
 
-import "../styles/popup.css"
+// Require instead of import, webpack?
+require('../styles/popup.css');
 
 export class ConnectButton extends Component {
     render() {
         return (
             <div className="popup-padded">
-                <h1>Hello</h1>
-                <button onClick={showWallet}>Show wallet</button>
-                <br />
-                <Wallet /><br/><br />
-                <SendOneLamportToRandomAddress />
+            <h1>Hello</h1>
+                <StrictMode>
+                    <Wallet />
+                </StrictMode>
             </div>
         )
     }
@@ -28,7 +28,4 @@ render(
     document.getElementById('app-container')
 )
 
-function showWallet(e : MouseEvent):void {
-    e.preventDefault();
-}
 
