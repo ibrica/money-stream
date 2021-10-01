@@ -18,23 +18,29 @@
     "scripts": [
       "js/background.js"
     ],
-    "persistent": false
+    "persistent": true
   },
   "permissions": [
-    "https://*/*"
+    "https://*/*",
+    "tabs",
+    "activeTab"
   ],
   "content_security_policy": "default-src 'self'; style-src 'self' data: 'unsafe-inline'; img-src 'self' data: https:; prefetch-src 'self' data: https:; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com",
   "content_scripts": [
     { 
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
+      "matches": ["<all_urls>"],
       "js": ["js/inject.js"],
       "all_frames": true
     }
   ],
   "web_accessible_resources": [
     "js/content.js"
-  ]
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://google.com/*",
+      "*://localhost/*",
+      "chrome://new-tab-page/"
+    ]
+  }
 }

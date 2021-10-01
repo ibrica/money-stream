@@ -15,3 +15,21 @@
     node.appendChild(script);
 }
 injectScript(chrome.extension.getURL('js/content.js'), 'body');
+// TODO: New tab problem, maybe something like: https://gist.github.com/danharper/8364399
+/* Think about this https://stackoverflow.com/questions/53289557/chrome-extension-best-way-to-send-messages-from-injected-script-to-background
+
+script.onload = function() {
+    this.remove();
+};
+(document.head || document.documentElement).appendChild(s);
+*/
+window.addEventListener('message', function(event) {
+    // only accept messages from the current tab
+    if (event.source != window)
+        return;
+    if(event.data.type 
+        && (event.data.type === "FROM_PAGE")
+        && typeof chrome['app'].isInstalled !== 'undefined') {
+           chrome.runtime.sendMessage({solana: event.data.solana})
+        }
+}, false);
