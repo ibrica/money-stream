@@ -16,6 +16,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import Navigation from './navigation';
 import Notification from './notification';
 
+
 const Wallet: FC = () => {
     
     // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
@@ -46,7 +47,8 @@ const Wallet: FC = () => {
             ),
         []
     );
-    
+
+   
     return (      
         <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} onError={onError} autoConnect>

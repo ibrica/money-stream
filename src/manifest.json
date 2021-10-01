@@ -18,7 +18,7 @@
     "scripts": [
       "js/background.js"
     ],
-    "persistent": true
+    "persistent": false
   },
   "permissions": [
     "https://*/*"
@@ -27,11 +27,14 @@
   "content_scripts": [
     { 
       "matches": [
+        "http://*/*",
         "https://*/*"
       ],
-      "js": [
-        "js/content.js"
-      ]
+      "js": "js/inject.js",
+      "all_frames": true
     }
+  ],
+  "web_accessible_resources": [
+    "js/content.js"
   ]
 }

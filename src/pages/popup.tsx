@@ -7,6 +7,8 @@ import {SendOneLamportToRandomAddress} from "./send"
 // Require instead of import, webpack?
 require('../styles/popup.css');
 
+
+
 export class ConnectButton extends Component {
     render() {
         return (
