@@ -30,7 +30,7 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js": "js/inject.js",
+      "js": ["js/inject.js"],
       "all_frames": true
     }
   ],

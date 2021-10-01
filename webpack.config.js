@@ -9,7 +9,8 @@ module.exports = {
     devtool: "inline-source-map",
 
     entry: {
-        content: ['./src/app/content.ts', './src/app/inject.ts'] ,
+        content: './src/app/content.ts', 
+        inject: './src/app/inject.ts',
         background: './src/app/background.ts',
         popup: './src/pages/popup.tsx'
     },
