@@ -1,5 +1,6 @@
 window['solanaWatch'] = {};
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    window['solanaWatch'][sender.tab.id] = message.solana || null;
+    console.log(message)
+    window['solanaWatch'][sender.tab.id] = message.solanaJSON || null;
 });

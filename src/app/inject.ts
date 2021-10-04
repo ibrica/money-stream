@@ -24,12 +24,13 @@ script.onload = function() {
 (document.head || document.documentElement).appendChild(s);
 */
 window.addEventListener('message', function(event) {
+    console.log(event.data);
     // only accept messages from the current tab
     if (event.source != window)
         return;
     if(event.data.type 
         && (event.data.type === "FROM_PAGE")
         && typeof chrome['app'].isInstalled !== 'undefined') {
-           chrome.runtime.sendMessage({solana: event.data.solana})
+           chrome.runtime.sendMessage({solanaJSON: event.data.solanaJSON})
         }
 }, false);

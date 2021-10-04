@@ -1,34 +1,19 @@
+import {JSONStringifyFunctions}  from '../lib/util'
 
-/**
- * Send solana wallet object to background
- */
-/*
-let extensionId = "jjpefebophfhheaocdffklbcjmmddkfd";
+// Using approach https://www.freecodecamp.org/news/chrome-extension-message-passing-essentials/
+// Stringify-ing functions too
 
-chrome.runtime.sendMessage(extensionId, {openUrlInEditor: "https://google.com", solana: window['solana']}, function(response) {
-    console.log(response);
-    if (!response.success)
-        handleError();
-});
-function handleError() {
-    console.log("Send message error!");
-}
-
-https://www.freecodecamp.org/news/chrome-extension-message-passing-essentials/
-
-*/
-console.log("Sending")
 function parseSolanaDetails() {
     let main = {solana: null};
 
-    main.solana = JSON.parse(JSON.stringify(window['solana'])) || null;
+    main.solana = JSONStringifyFunctions(window['solana']) || null;
 
     return main;
 }
 
 setTimeout(() => {
-    let solana = parseSolanaDetails();
-    window.postMessage({ type: "FROM_PAGE", solana },"*");
+    let solanaJSON = parseSolanaDetails();
+    window.postMessage({ type: "FROM_PAGE", solanaJSON },"*");
 }, 1000);
 
 
