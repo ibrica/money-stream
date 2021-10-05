@@ -1,4 +1,4 @@
-import {JSONStringifyFunctions}  from '../lib/util'
+
 
 // Using approach https://www.freecodecamp.org/news/chrome-extension-message-passing-essentials/
 // Stringify-ing functions too

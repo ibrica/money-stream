@@ -1,8 +1,6 @@
 import * as React from "react"
 import {Component, MouseEvent, StrictMode} from "react"
 import {render} from "react-dom"
-import Wallet from './wallet'
-import { JSONParseFunctions}  from '../lib/util'
 import {SendOneLamportToRandomAddress} from "./send"
 
 // Require instead of import, webpack?
@@ -41,7 +39,7 @@ export class ConnectButton extends Component {
             <div className="popup-padded">
             <h1>Hello</h1>
                 <StrictMode>
-                    <Wallet />
+                    <SendOneLamportToRandomAddress />
                 </StrictMode>
             </div>
         )

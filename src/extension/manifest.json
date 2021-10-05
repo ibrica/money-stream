@@ -16,7 +16,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "js/background.js"
+      "background.js"
     ],
     "persistent": true
   },
@@ -29,12 +29,12 @@
   "content_scripts": [
     { 
       "matches": ["<all_urls>"],
-      "js": ["js/inject.js"],
+      "js": ["inject.js"],
       "all_frames": true
     }
   ],
   "web_accessible_resources": [
-    "js/content.js"
+    "content.js"
   ],
   "externally_connectable": {
     "matches": [

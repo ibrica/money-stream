@@ -9,14 +9,15 @@ module.exports = {
     devtool: "inline-source-map",
 
     entry: {
-        content: './src/app/content.ts', 
-        inject: './src/app/inject.ts',
-        background: './src/app/background.ts',
-        popup: './src/pages/popup.tsx'
+        'extension/content' : './src/extension/app/content.ts', 
+        'extension/inject': './src/extension/app/inject.ts',
+        'extension/background': './src/extension/app/background.ts',
+        'extension/popup' : './src/extension/app/pages/popup.tsx',
+        'site/index' : './src/site/pages/index.tsx',
     },
 
     output: {
-        path: path.resolve(__dirname, 'dist/js'),
+        path: path.resolve(__dirname, 'dist/'),
         filename: '[name].js'
     },
 
@@ -39,7 +40,8 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin({
           patterns: [
-              { from: 'src', to:'../', globOptions: { ignore: [ '**.ts', '**.tsx' ] }} 
+              { from: 'src/extension/', to:'../dist/extension/', globOptions: { ignore: [ '**.ts', '**.tsx' ] }},
+              { from: 'src/site/', to:'../dist/site/', globOptions: { ignore: [ '**.ts', '**.tsx' ] }},
           ]
         }),
         new webpack.EnvironmentPlugin({
@@ -58,7 +60,7 @@ module.exports = {
     ],
     devServer: {
         static: {
-          directory: path.join(__dirname, 'dist'),
+          directory: path.join(__dirname, 'dist/site'),
         },
         compress: true,
         port: 9000,
