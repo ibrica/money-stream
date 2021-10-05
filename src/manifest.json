@@ -23,7 +23,7 @@
   "permissions": [
     "https://*/*",
     "tabs",
-    "activeTb"
+    "activeTab"
   ],
   "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' data: 'unsafe-inline'; img-src 'self' data: https:; prefetch-src 'self' data: https:; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com",
   "content_scripts": [

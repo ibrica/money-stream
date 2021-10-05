@@ -7,19 +7,32 @@ import {SendOneLamportToRandomAddress} from "./send"
 
 // Require instead of import, webpack?
 require('../styles/popup.css');
-
+/*
 window.addEventListener('DOMContentLoaded', () => {
     let bg = chrome.extension.getBackgroundPage();
 
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         let currentTabId = tabs[0].id;
-        let solanaWatch = bg['solanaWatch'][currentTabId];
-        // Finaly insert solana wallet extension data here, so wallet adapter can work
-        window['solana'] = JSONParseFunctions.call(window, solanaWatch.solana); // context should be a window
-
+        chrome.tabs.sendMessage(tabs[0].id, {message: "hello"}, function(response) {
+            console.log(response.farewell);
+        });
     });
 });
 
+chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
+      console.log(response.farewell);
+    });
+  });
+
+*/
+let port = chrome.extension['connect']({
+    name: "Sample Communication"
+});
+port.postMessage("Hi BackGround");
+port.onMessage.addListener(function(msg) {
+    console.log("message recieved" + msg);
+});
 
 
 export class ConnectButton extends Component {

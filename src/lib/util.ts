@@ -1,32 +1,57 @@
+// TODO: Recheck this approach, scope of callbacks?
+
 export function JSONStringifyFunctions(obj: any): string {
-    return JSON.stringify(obj, function(k,v){
+    // First flatten object (include prototype properties)
+    let flatObj: object = flatten(obj);
+    // get a stringified version of our object
+    // and indent the keys at 2 spaces
+    return JSON.stringify(flatObj, function(k,value){ // replacer function
         //special treatment for function types
-        if(typeof v === "function")
-            return v.toString();//we save the function as string
-        return v;
-    });
+        if(typeof value === "function"){
+            return value.toString();//save the function as string
+        }
+        return value;
+    }, 2);
 }
 
+// Add all proto elements in real object, use recursion
+function flatten(obj: object) {
+    if (obj === null) {
+        return null;
+    }
 
-function compileFunction(str: string){
-    //find parameters
-    let pstart = str.indexOf('('), pend = str.indexOf(')');
-    let params = str.substring(pstart+1, pend);
-    params = params.trim();
-    //find function body
-    let bstart = str.indexOf('{'), bend = str.lastIndexOf('}');
-    str = str.substring(bstart+1, bend);
-    return Function(params, str);
+    if (Array.isArray(obj)) {
+        var newObj = [];
+        for (var i = 0; i < obj.length; i++) {
+            if (typeof obj[i] === 'object') {
+                newObj.push(flatten(obj[i]));
+            }
+            else {
+                newObj.push(obj[i]);
+            }
+        }
+        return newObj;
+    }
+
+    var result = Object.create(obj);
+    for(var key in result) {
+        if (typeof result[key] === 'object') {
+            result[key] = flatten(result[key]);
+        }
+        else {
+            result[key] = result[key];
+        }
+    }
+    return result;
 }
 
 export function JSONParseFunctions (serialized: string) {
-    console.log("Compile");
-    console.log(this);
-    console.log(serialized);
-        return JSON.parse(serialized, function(k,v){
+        return JSON.parse(serialized, function(key,value){ // reviver
             // TODO: find a better way to determ if a value is a function string
-            if(typeof v === "string" && v.indexOf("function") !== -1)
-                return compileFunction(v);
-            return v;
+            if(typeof value === "string" && (value.indexOf("function") !== -1 || value.indexOf("=>") == -1)){
+                let functionTemplate = `(${value})`;    
+                return eval(functionTemplate); 
+            }
+            return value;
     });
 }
