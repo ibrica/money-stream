@@ -4,7 +4,7 @@ import {render} from "react-dom"
 import {SendOneLamportToRandomAddress} from "./send"
 
 // Require instead of import, webpack?
-require('../styles/popup.css');
+require('../../styles/popup.css');
 /*
 window.addEventListener('DOMContentLoaded', () => {
     let bg = chrome.extension.getBackgroundPage();

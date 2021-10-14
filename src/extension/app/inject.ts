@@ -14,7 +14,7 @@
     script.setAttribute('src', file_path);
     node.appendChild(script);
 }
-injectScript(chrome.extension.getURL('js/content.js'), 'body');
+injectScript(chrome.extension.getURL('content.js'), 'body');
 // TODO: New tab problem, maybe something like: https://gist.github.com/danharper/8364399
 /* Think about this https://stackoverflow.com/questions/53289557/chrome-extension-best-way-to-send-messages-from-injected-script-to-background
 

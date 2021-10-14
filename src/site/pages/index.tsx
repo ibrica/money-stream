@@ -45,7 +45,6 @@ export class ConnectButton extends Component {
             </div>
         )
     }
-
 }
 
 // render method
