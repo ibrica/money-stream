@@ -27,6 +27,10 @@ module.exports = {
             "crypto": false, // Needed for solana wallet adapter
             "stream": require.resolve("stream-browserify"),
             "buffer": require.resolve("buffer"),
+            "path": false,
+            "assert": false,
+            "util": false,
+            "fs": false,
         } 
     },
 

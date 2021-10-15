@@ -5,7 +5,7 @@ import Wallet from './wallet'
 import {StartStreaming} from "./receive"
 
 // Require instead of import, webpack?
-import '../styles/popup.css';
+import '../styles/index.css';
 /*
 window.addEventListener('DOMContentLoaded', () => {
     let bg = chrome.extension.getBackgroundPage();
@@ -43,12 +43,13 @@ window.addEventListener('message', function(event) {
            console.log("window is listening")
     }
 }, false);
-
+/*
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.source){
         console.log("runtime is listening: " + message);
     }
 });
+*/
 
 export class ConnectButton extends Component {
     render() {

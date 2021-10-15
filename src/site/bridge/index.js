@@ -6,7 +6,7 @@
  import { Program, Provider} from '@project-serum/anchor';
  const { PublicKey, Transaction, SystemProgram } = anchor.web3;
  const { TOKEN_PROGRAM_ID, Token } = require("@solana/spl-token");
- const idl = require('../idl/money_stream_program.json');
+ const idl = require('./idl/money_stream_program.json');
 
 const baseAccount = null;
 let tokenAccount = null;

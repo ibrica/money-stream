@@ -1,4 +1,8 @@
-# TypeScript / React  Chrome Solana Ignition Extension
+# Chrome extension and site plugin
+
+## About
+In this repo is a web3 solution for using a [MoneyStream](https://github.com/ibrica/money-stream-program) Solana Sealevel smart contract. Still in development, not ready for testing!
+
 ## Get started
 
 Clone this repository, and then, in this directory:
