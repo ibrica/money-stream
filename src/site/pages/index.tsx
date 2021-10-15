@@ -57,7 +57,6 @@ export class ConnectButton extends Component {
             <div className="popup-padded">
                 <StrictMode>
                     <Wallet />
-                    <StartStreaming />
                 </StrictMode>
             </div>
         )

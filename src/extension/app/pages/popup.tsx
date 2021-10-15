@@ -1,7 +1,8 @@
 import * as React from "react"
 import {Component, MouseEvent, StrictMode} from "react"
 import {render} from "react-dom"
-import {SendOneLamportToRandomAddress} from "./send"
+import {Wallet} from './wallet'
+
 
 // Require instead of import, webpack?
 import '../../styles/popup.css';
@@ -18,14 +19,13 @@ export class ConnectButton extends Component {
     render() {
         return (
             <div className="popup-padded">
-            <h1>Hello</h1>
                 <StrictMode>
-                    <SendOneLamportToRandomAddress />
+                    <br />
+                    <Wallet /><br/>   
                 </StrictMode>
             </div>
         )
     }
-
 }
 
 // render method
@@ -33,5 +33,6 @@ render(
     <ConnectButton />,
     document.getElementById('app-container')
 );
+
 
 

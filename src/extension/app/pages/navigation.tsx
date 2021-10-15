@@ -6,7 +6,6 @@ const Navigation: FC = () => {
     return (
         <nav>
             <h1>Money stream</h1>
-            <p> Send money over time</p>
         </nav>
     );
 };
