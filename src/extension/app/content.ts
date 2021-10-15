@@ -18,32 +18,10 @@ setTimeout(() => {
 */
 
 setTimeout(() => {
-    window.postMessage({ type: "FROM_PAGE", text: "Hi"},"*");
+    window.postMessage({ source: 'FROM_PAGE', command: 'LOCATION', text: window.location.host},"*");
 }, 1000);
 
-/*
-chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-    console.log(response.farewell);
-  });
 
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-      console.log(sender.tab ?
-                  "from a content script:" + sender.tab.url :
-                  "from the extension");
-      if (request.greeting === "hello")
-        sendResponse({farewell: "goodbye"});
-    }
-  );
-  */
-
-/*
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log(window.location);
-    console.log(message.message)
-   //    sendResponse({"message": "Alles gute"})
-})  
-*/
 
 
 

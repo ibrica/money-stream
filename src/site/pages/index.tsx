@@ -2,7 +2,7 @@ import * as React from "react"
 import {Component, MouseEvent, StrictMode} from "react"
 import {render} from "react-dom"
 import Wallet from './wallet'
-import {SendOneLamportToRandomAddress} from "./send"
+import {StartStreaming} from "./receive"
 
 // Require instead of import, webpack?
 import '../styles/popup.css';
@@ -26,7 +26,7 @@ chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 
 let port = chrome.extension['connect']({
-    name: "Sample Communication"
+    name: "Communication"
 });
 port.postMessage("Hi BackGround");
 port.onMessage.addListener(function(msg) {
@@ -34,13 +34,29 @@ port.onMessage.addListener(function(msg) {
 });
 */
 
+window.addEventListener('message', function(event) {
+    // only accept messages from the current tab
+    if (event.source != window){
+        return;
+    }
+    if(event.data.source && (event.data.source === "FROM_PAGE")){
+           console.log("window is listening")
+    }
+}, false);
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.source){
+        console.log("runtime is listening: " + message);
+    }
+});
+
 export class ConnectButton extends Component {
     render() {
         return (
             <div className="popup-padded">
-            <h1>Hello</h1>
                 <StrictMode>
                     <Wallet />
+                    <StartStreaming />
                 </StrictMode>
             </div>
         )

@@ -1,0 +1,238 @@
+{
+  "version": "0.0.0",
+  "name": "money_stream_program",
+  "instructions": [
+    {
+      "name": "initializeStream",
+      "accounts": [
+        {
+          "name": "initializer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "initializerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "streamAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultAccountBump",
+          "type": "u8"
+        },
+        {
+          "name": "limit",
+          "type": "u64"
+        },
+        {
+          "name": "step",
+          "type": "u64"
+        },
+        {
+          "name": "rate",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "cancelStream",
+      "accounts": [
+        {
+          "name": "initializer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "vaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "takerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "initializerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "streamAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdraw",
+      "accounts": [
+        {
+          "name": "taker",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "initializer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "takerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "initializerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "streamAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "tick",
+      "accounts": [
+        {
+          "name": "initializer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "streamAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "balance",
+      "accounts": [
+        {
+          "name": "taker",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "initializer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "streamAccount",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "StreamAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "initializerKey",
+            "type": "publicKey"
+          },
+          {
+            "name": "initializerTokenAccount",
+            "type": "publicKey"
+          },
+          {
+            "name": "limit",
+            "type": "u64"
+          },
+          {
+            "name": "step",
+            "type": "u64"
+          },
+          {
+            "name": "rate",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 300,
+      "name": "Unauthorized",
+      "msg": "You are not authorized to perform this action."
+    },
+    {
+      "code": 301,
+      "name": "LimitLow",
+      "msg": "Limit lower then one step."
+    }
+  ],
+  "metadata": {
+    "address": "3PPpnzreCgoLg4BdVgTgVbG5tyzA2kUqpxSSuQgBkN57"
+  }
+}

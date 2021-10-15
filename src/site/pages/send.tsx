@@ -1,32 +1,21 @@
+/**
+ * Typescript types problems, we're going with plain JS (allowJS in tsconfig)
+ */
+
+
 import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Keypair, SystemProgram, Transaction } from '@solana/web3.js';
 import * as React from 'react';
-import{ FC, useCallback } from 'react';
+import{ useCallback } from 'react';
+let opts = { preflightCommitment: "processed"};
 
-export const SendOneLamportToRandomAddress: FC = () => {
-    const { connection } = useConnection();
-    const { publicKey, sendTransaction } = useWallet();
 
-    const onClick = useCallback(async () => {
-        if (!publicKey) throw new WalletNotConnectedError();
+export const SendOneLamportToRandomAddress = () => {
 
-        const transaction = new Transaction().add(
-            SystemProgram.transfer({
-                fromPubkey: publicKey,
-                toPubkey: Keypair.generate().publicKey,
-                lamports: 1,
-            })
-        );
-
-        const signature = await sendTransaction(transaction, connection);
-
-        await connection.confirmTransaction(signature, 'processed');
-    }, [publicKey, sendTransaction, connection]);
 
     return (
-        <button onClick={onClick} disabled={!publicKey}>
-            Send 1 lamport to a random address!
+        <button  >
+            Send money
         </button>
     );
 };
