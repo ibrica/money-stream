@@ -2,7 +2,7 @@ import * as React from "react"
 import {Component, MouseEvent, StrictMode} from "react"
 import {render} from "react-dom"
 import Wallet from './wallet'
-import {StartStreaming} from "./receive"
+import {StartStreaming} from "./start"
 
 // Require instead of import, webpack?
 import '../styles/index.css';
@@ -56,6 +56,7 @@ export class ConnectButton extends Component {
         return (
             <div className="popup-padded">
                 <StrictMode>
+                    <StartStreaming />
                     <Wallet />
                 </StrictMode>
             </div>
@@ -64,7 +65,6 @@ export class ConnectButton extends Component {
 }
 
 // render method
-
 render(
     <ConnectButton />,
     document.getElementById('app-container')

@@ -10,9 +10,7 @@ import{ useCallback } from 'react';
 let opts = { preflightCommitment: "processed"};
 
 
-export const SendOneLamportToRandomAddress = () => {
-
-
+export const SendMoney = () => {
     return (
         <button  >
             Send money
